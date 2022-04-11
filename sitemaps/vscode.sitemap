@@ -1,0 +1,5 @@
+sitemap vscode label="RBS-34: Visual Studio Code" {
+    Frame label="Test Items" {
+        Switch item=testSwitch
+    }
+}

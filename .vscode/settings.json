@@ -1,0 +1,24 @@
+{
+    "openhab.connection.authToken": "oh.vweber.toP2qzhZYDeXOJgdQ00Iub2pEwq9VLu12H2jj8j2yd4U3CF1nDZ9RwgryoOPKO9DNQWNvVlcalJx6LhV73Mg",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "sounds/": true,
+        "things/": true,
+        "html/": true,
+        "items/": true,
+        "persistence/": true,
+        "rules/": true,
+        "scripts/": true,
+        "transform/": true,
+        "automation/jsr223/": true,
+        "automation/js/node_modules/@js-joda/": true,
+        "automation/js/node_modules/parse-duration/": true,
+        "automation/js/node_modules/openhab/": true,
+        "**/*package**.json": true,
+    }
+}

@@ -1,0 +1,70 @@
+sitemap overview label="RBS-34: Overview" {
+    Frame {
+        /* --- Status Messages --- */
+        Text icon="error" label="Chromecast is booting" visibility=[speakersChromecastBooting == ON]
+        Text item=desktopComputerBooting visibility=[desktopComputerBooting == ON]
+        Text item=desktopComputerShuttingDown visibility=[desktopComputerShuttingDown == ON]
+        /* --- Standalone Plug Control --- */
+        Switch item=bedPlugLEDStripPower label="Bed LED Strip" icon="light"
+        Switch item=plugFanPower label="Room Fan []" icon="fan"
+        Switch item=deskPlugPower icon="screen" label="Desk Monitors"
+        /* --- Desktop Control --- */
+        Switch item=desktopComputerPowerControlSuspended label="Desktop Power Control is Disabled" icon="error" mappings=["OFF" = "Enable"] visibility=[desktopComputerPowerControlSuspended == ON]
+        Switch item=desktopComputerPower icon="desktop" label="Desktop Computer" visibility=[desktopComputerPowerControlSuspended == OFF]
+        Group item=desktopComputerPower label="Desktop Computer Options" {
+            Text item=desktopComputerBooting visibility=[desktopComputerBooting == ON]
+            Text item=desktopComputerShuttingDown visibility=[desktopComputerShuttingDown == ON]
+            Switch item=deskPlugPower label="Monitors" icon="screen"
+            Switch item=desktopComputerPowerControlSuspended label="Automatic Shutdown" icon="inverted_remote" mappings=[
+                "ON" = "Disabled", "OFF" = "Enabled"
+            ]
+            Switch item=desktopComputerPowerOptions label="Initiate" mappings=[
+                "restart"="Restart", "shutdown"="Shutdown", "hibernate"="Hibernation"
+            ]
+        }
+        /* --- Speakers Control --- */
+        Switch item=speakersPower icon="speakers" label="Sound System"
+        Group item=speakersPower icon="speakers" label="Sound System Options" {
+            Text icon="error" label="Chromecast is booting" visibility=[speakersChromecastBooting == ON]
+        }
+        /* --- Television Control --- */
+        Switch item=tvWebOSPower label="Television" icon="screen"
+        Group item=tvWebOSPower label="Television Options" icon="screen" {
+            Slider item=tvWebOSVolume label="Volume"
+            Switch item=tvWebOSute label="Telvision Muted" icon="soundvolume"
+            Text item=tvWebOSAppLauncher label="[%s]"
+            Text item=tvWebOSChannel label="[%s]"
+        }
+    }
+    Frame label="Lighting - Brightness Presets" {
+        Switch item=lightingPresetBrightness label="" mappings=[
+            "full" = "Full",
+            "high" = "High",
+            "mid" = "Mid",
+            "low" = "Low",
+            "off" = "Off"
+        ]
+        Switch item=lightingPresetBrightnessApplyGlobally icon=lightbulb label="" mappings=[ON = "Apply Selected Preset to All"]
+        Switch item=bulbHolmo_BrightnessTrigger icon=lightbulb label="Holmö Lamp" mappings=[ON = "Apply Selected Preset"]
+        Switch item=loungeBulb_BrightnessTrigger icon=lightbulb label="Lounge Lamp" mappings=[ON = "Apply Selected Preset"]
+        Switch item=tvLamp_BrightnessTrigger icon=lightbulb label="Television Lamp" mappings=[ON = "Apply Selected Preset"]
+    }
+    Frame label="Lighting - Color Presets" {
+        Selection item=lightingPresetColor label="" mappings=[
+            "blue" = "Blue",
+            "blue_dark" = "Blue (Dark)",
+            "green" = "Green",
+            "green_dark" = "Green (Dark)",
+            "maroon" = "Maroon",
+            "red" = "Red",
+            "red_dark" = "Red (Dark)",   
+            "pink" = "Pink",
+            "purple" = "Purple",
+            "yellow" = "Yellow"
+        ]
+        Switch item=lightingPresetColorApplyGlobally icon=colorpicker label="" mappings=[ON = "Apply Selected Preset to All"]
+        Switch item=bulbHolmo_ColorTrigger icon=colorpicker label="Holmö Lamp" mappings=[ON = "Apply Selected Preset"]
+        Switch item=loungeBulb_ColorTrigger icon=colorpicker label="Lounge Lamp" mappings=[ON = "Apply Selected Preset"]
+        Switch item=tvLamp_ColorTrigger icon=colorpicker label="Television Lamp" mappings=[ON = "Apply Selected Preset"]
+    }
+}

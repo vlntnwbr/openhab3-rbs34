@@ -1,0 +1,93 @@
+{
+    "rules.JSRule with ItemCommandTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.ItemCommandTrigger(\"${4:item}\", \"${5:command}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },
+    "rules.JSRule with ItemStateChangeTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.ItemStateChangeTrigger(\"${4:item}\", \"${5:oldState}\", \"${6:newState}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },  
+    "rules.JSRule with ThingStatusChangeTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.ThingStatusChangeTrigger(\"${4:item}\", \"${5:newState}\", \"${6:oldState}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },
+    "ItemCommandTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.ItemCommandTrigger()"],
+        "body": "triggers.ItemCommandTrigger(\"${1:itemName}\"),"
+    },
+    "ItemStateChangeTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.ItemStateChangeTrigger()"],
+        "body": "triggers.ItemStateChangeTrigger(\"${1:item}\", \"${2:oldState}\", \"${3:newState}\"),"
+    },
+    "ThingStatusChangeTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.ThingStatusChangeTrigger()"],
+        "body": "triggers.ThingStatusChangeTrigger(\"${1:item}\", \"${2:newState}\", \"${3:oldState}\"),"
+    },
+    "items.getItem()": {
+        "scope": "javascript",
+        "prefix": ["items.getItem", "getItem"],
+        "body": "items.getItem(${1:itemName});"
+    },
+    "items.getItem().state": {
+        "scope": "javascript",
+        "prefix": ["items.getItem", "getItemState"],
+        "body": "items.getItem(${1:itemName}).state"
+    },
+    "items.getItem().sendCommand()": {
+        "scope": "javascript",
+
+        "prefix": ["items.getItem", "sendCommand"],
+        "body": "items.getItem(${1:itemName}).sendCommand(${2:command});"
+    },
+    "items.getItem().sendCommandIfDifferent()": {
+        "scope": "javascript",
+
+        "prefix": ["items.getItem", "sendCommandIfDifferent"],
+        "body": "items.getItem(${1:itemName}).sendCommandIfDifferent(${2:command});"
+    },
+    "items.getItem().postUpdate()": {
+        "scope": "javascript",
+
+        "prefix": ["items.getItem", "postUpdate"],
+        "body": "items.getItem(${1:itemName}).postUpdate(${2:command});"
+    },
+}

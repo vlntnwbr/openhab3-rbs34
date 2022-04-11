@@ -1,0 +1,6 @@
+automation/js/node_modules/@js-joda/
+automation/js/node_modules/parse-duration/
+automation/js/node_modules/openhab/
+**/*package**.json
+
+**/secrets/*.json
