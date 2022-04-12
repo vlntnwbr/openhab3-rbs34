@@ -8,25 +8,21 @@
             "type": "shell",
             "problemMatcher": [],
             "command": "Get-Content",
-            "args": [
-                "O:/rbs34/userdata/logs/events.log",
-                "-Tail",
-                "10",
-                "-Wait"
-            ]
+            "args": ["O:/rbs34/userdata/logs/events.log", "-Wait"]
         },
         {
             "label": "tail openhab log",
             "type": "shell",
             "problemMatcher": [],
             "command": "Get-Content",
-            "args": [
-                "O:/rbs34/userdata/logs/openhab.log",
-                "-Tail",
-                "10",
-                "-Wait"
-            ],
-            
+            "args": ["O:/rbs34/userdata/logs/openhab.log", "-Wait"],
+        },
+        {
+            "label": "Restart Docker Container",
+            "type": "shell",
+            "problemMatcher": [],
+            "command": "ssh",
+            "args": ["raspi", "bash", "openhab/rbs34/restart.sh"]
         }
     ]
 }
