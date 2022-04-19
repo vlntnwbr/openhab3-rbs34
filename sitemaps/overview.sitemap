@@ -53,16 +53,20 @@ sitemap overview label="RBS-34: Overview" {
     }
     Frame label="Lighting - Color Presets" {
         Selection item=lightingPresetColor label="" mappings=[
-            "blue" = "Blue",
-            "blue_dark" = "Blue (Dark)",
+            "red" = "Red",
+            "red_dark" = "Red (Dark)",
+            "orange" = "Orange",
+            "orange_dark" = "Orange (Dark)",
+            "yellow" = "Yellow",
+            "yellow_dark" = "Yellow (Dark)"
             "green" = "Green",
             "green_dark" = "Green (Dark)",
-            "maroon" = "Maroon",
-            "red" = "Red",
-            "red_dark" = "Red (Dark)",   
-            "pink" = "Pink",
+            "cyan" = "Cyan",
+            "cyan_dark" = "Cyan (Dark)",
+            "blue" = "Blue",
+            "blue_dark" = "Blue (Dark)",
             "purple" = "Purple",
-            "yellow" = "Yellow"
+            "pink" = "Pink"
         ]
         Switch item=lightingPresetColorApplyGlobally icon=colorpicker label="" mappings=[ON = "Apply Selected Preset to All"]
         Switch item=bulbHolmo_ColorTrigger icon=colorpicker label="Holmö Lamp" mappings=[ON = "Apply Selected Preset"]
