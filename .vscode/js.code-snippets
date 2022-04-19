@@ -1,9 +1,4 @@
 {
-    "class setter": {
-        "scope": "javascript",
-        "prefix": "set",
-        "body": "set ${1:attribute}(${2:value}) { this.${1} = ${2}; };",
-    },
     "rules.JSRule with ItemCommandTrigger": {
         "scope": "javascript",
         "prefix": "rules.JSRule",
@@ -52,6 +47,22 @@
             "});"
         ]
     },
+    "rules.JSRule with ChannelEventTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.ChannelEventTrigger(\"${4:triggerChannel}\", \"${5:event}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },
     "ItemCommandTrigger": {
         "scope": "javascript",
         "prefix": ["triggers.ItemCommandTrigger()"],
@@ -66,6 +77,11 @@
         "scope": "javascript",
         "prefix": ["triggers.ThingStatusChangeTrigger()"],
         "body": "triggers.ThingStatusChangeTrigger(\"${1:item}\", \"${2:newState}\", \"${3:oldState}\"),"
+    },
+    "ChannelEventTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.ChannelEventTrigger()"],
+        "body": "triggers.ChannelEventTrigger(\"${4:triggerChannel}\", \"${5:event}\"),"
     },
     "items.getItem()": {
         "scope": "javascript",
@@ -94,5 +110,15 @@
 
         "prefix": ["items.getItem", "postUpdate"],
         "body": "items.getItem(${1:itemName}).postUpdate(${2:command});"
+    },
+    "event.receivedCommand.toString()": {
+        "scope": "javascript",
+        "prefix": ["event.receivedCommand.toString", "receivedCommand"],
+        "body": "event.receivedCommand.toString();",
+    },
+    "event.itemName": {
+        "scope": "javascript",
+        "prefix": "event.itemName",
+        "body": "event.itemName;",
     },
 }
