@@ -1,8 +1,28 @@
 const { actions, items } = require ("openhab");
 const { TaggedRuleName, sendEventGhostCommand } = require("rbs34/utils");
+const { sendTaskerCommandViaJoin } = require("rbs34/joaojoin");
 
 let logger = log("desktop");
 const DesktopRule = new TaggedRuleName("desktop");
+
+
+function sendComputerStatesToDailyPhone() {
+    sendTaskerCommandViaJoin(
+        "dailyPhone", "rbs34DesktopControl",
+        items.getItem("desktopComputerPower").state,
+        items.getItem("desktopComputerPowerControlSuspended").state
+    );
+};
+
+
+rules.JSRule({name: DesktopRule.get("Power Control Suspension Changed"),
+    description: "Send Computer States to dailyPhone using Join API",
+    id: "desktopPowerControlSuspendedChanged",
+    triggers: [
+        triggers.ItemStateChangeTrigger("desktopComputerPowerControlSuspended"),
+    ],
+    execute: event => { sendComputerStatesToDailyPhone(); }
+});
 
 
 rules.JSRule({name: DesktopRule.get("Power On"),
@@ -15,6 +35,7 @@ rules.JSRule({name: DesktopRule.get("Power On"),
         if (items.getItem("desktopComputerShuttingDown").state == "ON") {
             logger.warn("Aborting Desktop Shutdown");
             items.getItem("desktopComputerPowerOptions").sendCommand("abort");
+            return;
         }
         logger.info("Turning on Desktop Computer");
         const desktop = actions.thingActions(
@@ -60,7 +81,8 @@ rules.JSRule({name: DesktopRule.get("Computer Online"),
         items.getItem("desktopComputerPower").postUpdate("ON");
         items.getItem("desktopComputerBooting").postUpdate("OFF");
         items.getItem("desktopComputerShuttingDown").postUpdate("OFF");
-        items.getItem("deskPlugPower").sendCommandIfDifferent("ON");        
+        items.getItem("deskPlugPower").sendCommandIfDifferent("ON");
+        sendComputerStatesToDailyPhone();
     }
 });
 
@@ -78,6 +100,7 @@ rules.JSRule({name: DesktopRule.get("Computer Offline"),
         items.getItem("desktopComputerBooting").postUpdate("OFF");
         items.getItem("deskPlugPower").sendCommand("OFF");
         items.getItem("desktopComputerPowerOptions").postUpdate("NULL");
+        sendComputerStatesToDailyPhone();
     }
 });
 
@@ -97,7 +120,7 @@ rules.JSRule({name: DesktopRule.get("Computer Power Option Triggered"),
             return;
         } else if (powerOption == "abort") {
             items.getItem("desktopComputerShuttingDown").postUpdate("OFF");
-        } else if (powerOption != "restart") {
+        } else if (powerOption == "shutdown") {
             items.getItem("desktopComputerShuttingDown").postUpdate("ON");
         }
         logger.info("Sending Desktop Power Option: {}", powerOption);

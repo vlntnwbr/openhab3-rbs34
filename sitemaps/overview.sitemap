@@ -4,12 +4,14 @@ sitemap overview label="RBS-34: Overview" {
         Text icon="error" label="Chromecast is booting" visibility=[speakersChromecastBooting == ON]
         Text item=desktopComputerBooting visibility=[desktopComputerBooting == ON]
         Text item=desktopComputerShuttingDown visibility=[desktopComputerShuttingDown == ON]
+        Text icon="error" label="Presence phone is unreachable" visibility=[presencePhoneValentinOnline == OFF]
+        Text icon="error" label="Proxy phone is unreachable" visibility=[proxyPhoneOnline == OFF]
         /* --- Standalone Plug Control --- */
         Switch item=bedPlugLEDStripPower label="Bed LED Strip" icon="light"
         Switch item=plugFanPower label="Room Fan []" icon="fan"
         Switch item=deskPlugPower icon="screen" label="Desk Monitors"
         /* --- Desktop Control --- */
-        Switch item=desktopComputerPowerControlSuspended label="Desktop Power Control is Disabled" icon="error" mappings=["OFF" = "Enable"] visibility=[desktopComputerPowerControlSuspended == ON]
+        Switch item=desktopComputerPowerControlSuspended label="Desktop Power Control is Disabled" icon="desktop-off" mappings=["OFF" = "Enable"] visibility=[desktopComputerPowerControlSuspended == ON]
         Switch item=desktopComputerPower icon="desktop" label="Desktop Computer" visibility=[desktopComputerPowerControlSuspended == OFF]
         Group item=desktopComputerPower label="Desktop Computer Options" {
             Text item=desktopComputerBooting visibility=[desktopComputerBooting == ON]

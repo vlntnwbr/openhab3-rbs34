@@ -1,4 +1,9 @@
 {
+    "class setter": {
+        "scope": "javascript",
+        "prefix": "set",
+        "body": "set ${1:attribute}(${2:value}) { this.${1} = ${2}; };",
+    },
     "rules.JSRule with ItemCommandTrigger": {
         "scope": "javascript",
         "prefix": "rules.JSRule",
@@ -39,7 +44,7 @@
             "    description: \"${2:description}\",",
             "    id: \"${3:uniqueIdentifier}\",",
             "    triggers: [",
-            "        triggers.ThingStatusChangeTrigger(\"${4:item}\", \"${5:newState}\", \"${6:oldState}\"),",
+            "        triggers.ThingStatusChangeTrigger(\"${4:thingUID}\", \"${5:newState}\", \"${6:oldState}\"),",
             "    ],",
             "    execute: event => {",
             "        $0",
