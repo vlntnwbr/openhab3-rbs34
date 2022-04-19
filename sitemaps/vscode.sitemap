@@ -1,5 +1,39 @@
 sitemap vscode label="RBS-34: Visual Studio Code" {
     Frame label="Test Items" {
         Switch item=testSwitch
+        Switch item=testSwitch mappings=[ON=On, OFF=Off]
+    }
+    Frame label="Helpers" {
+        Text item=proxyPhoneOnline label="Proxy Phone [%sLINE]"
+    }
+    Frame label="Presence Helpers" {
+        Text item=presencePhoneValentinOnline label="Presence Phone Valentin [%sLINE]"
+        Switch item=presenceValentin label="Presence - Valentin"
+        Switch item=presenceValentinSuspended label="Presence Detection Suspended - Valentin"
+    }
+    Frame label="Sleep Helpers" {
+        Text item=SleepAsAndroid label="Command Receiver [%s]"
+        Selection item=SleepAsAndroid label="Send Sleep As Android Command" mappings=[
+            "UNKNOWN_SLEEP_CMD" = "Unknown",
+            "GoToSleep"         = "Bedtime",
+            "AlarmStarted"      = "Alarm - Ringing",
+            "AlarmStopped"      = "Alarm - Dismiss",
+            "StopRecording"     = "Sleep Recording - Stop",
+            "StartRecording"    = "Sleep Recording - Start",
+            "DayTime"           = "Awake"
+        ]
+        Text item=SleepState label="Sleep State [%s]"
+        Selection item=SleepState label="Set Sleep State" mappings=[
+            "BEDTIME" = "Bedtime",
+            "SLEEPING" = "Sleeping",
+            "ALARM" = "Alarm",
+            "WAKING" = "Waking",
+            "AWAKE" = "AWAKE"
+        ]
+    }
+    Frame label="Time Helpers" {
+        Text item=TimeOfYear label="Current Quarter of Year [%s]"
+        Text item=TimeOfDay label="Current Time of Day [%s]"
+        Switch item=DaylightSavingTime
     }
 }
