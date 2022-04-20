@@ -1,53 +1,6 @@
 {
-    "rules.JSRule with ItemCommandTrigger": {
-        "scope": "javascript",
-        "prefix": "rules.JSRule",
-        "body": [
-            "rules.JSRule({name: \"${1:name}\",",
-            "    description: \"${2:description}\",",
-            "    id: \"${3:uniqueIdentifier}\",",
-            "    triggers: [",
-            "        triggers.ItemCommandTrigger(\"${4:item}\", \"${5:command}\"),",
-            "    ],",
-            "    execute: event => {",
-            "        $0",
-            "    }",
-            "});"
-        ]
-    },
-    "rules.JSRule with ItemStateChangeTrigger": {
-        "scope": "javascript",
-        "prefix": "rules.JSRule",
-        "body": [
-            "rules.JSRule({name: \"${1:name}\",",
-            "    description: \"${2:description}\",",
-            "    id: \"${3:uniqueIdentifier}\",",
-            "    triggers: [",
-            "        triggers.ItemStateChangeTrigger(\"${4:item}\", \"${5:oldState}\", \"${6:newState}\"),",
-            "    ],",
-            "    execute: event => {",
-            "        $0",
-            "    }",
-            "});"
-        ]
-    },  
-    "rules.JSRule with ThingStatusChangeTrigger": {
-        "scope": "javascript",
-        "prefix": "rules.JSRule",
-        "body": [
-            "rules.JSRule({name: \"${1:name}\",",
-            "    description: \"${2:description}\",",
-            "    id: \"${3:uniqueIdentifier}\",",
-            "    triggers: [",
-            "        triggers.ThingStatusChangeTrigger(\"${4:thingUID}\", \"${5:newState}\", \"${6:oldState}\"),",
-            "    ],",
-            "    execute: event => {",
-            "        $0",
-            "    }",
-            "});"
-        ]
-    },
-    "rules.JSRule with ChannelEventTrigger": {
+    /* --- Rules with Single Trigger --- */
+    "[JSRule] ChannelEventTrigger": {
         "scope": "javascript",
         "prefix": "rules.JSRule",
         "body": [
@@ -63,30 +16,248 @@
             "});"
         ]
     },
-    "ItemCommandTrigger": {
+    "[JSRule] ItemStateChangeTrigger": {
         "scope": "javascript",
-        "prefix": ["triggers.ItemCommandTrigger()"],
-        "body": "triggers.ItemCommandTrigger(\"${1:itemName}\"),"
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.ItemStateChangeTrigger(\"${4:item}\", \"${5:oldState}\", \"${6:newState}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },  
+    "[JSRule] ItemStateUpdateTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.ItemStateUpdateTrigger(\"${4:item}\", \"${5:state}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },  
+    "[JSRule] ItemCommandTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.ItemCommandTrigger(\"${4:item}\", \"${5:command}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },
+    "[JSRule] GroupStateChangeTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.GroupStateChangeTrigger(\"${4:group}\", \"${5:oldState}\", \"${6:newState}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },  
+    "[JSRule] GroupStateUpdateTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.GroupStateUpdateTrigger(\"${4:group}\", \"${5:state}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },  
+    "[JSRule] GroupCommandTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.GroupCommandTrigger(\"${4:group}\", \"${5:command}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },
+    "[JSRule] ThingStatusChangeTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.ThingStatusChangeTrigger(\"${4:thingUID}\", \"${5:newStatus}\", \"${6:oldStatus}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },
+    "[JSRule] ThingStatusUpdateTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.ThingStatusUpdateTrigger(\"${4:thingUID}\", \"${5:status}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },
+    "[JSRule] SystemStartlevelTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.SystemStartlevelTrigger(${4:level}),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },
+    "[JSRule] GenericCronTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.GenericCronTrigger(\"${4:CronExpression}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },
+    "[JSRule] TimeOfDayTrigger": {
+        "scope": "javascript",
+        "prefix": "rules.JSRule",
+        "body": [
+            "rules.JSRule({name: \"${1:name}\",",
+            "    description: \"${2:description}\",",
+            "    id: \"${3:uniqueIdentifier}\",",
+            "    triggers: [",
+            "        triggers.TimeOfDayTrigger(\"${4:TimeOfDay}\"),",
+            "    ],",
+            "    execute: event => {",
+            "        $0",
+            "    }",
+            "});"
+        ]
+    },
+    /* --- Rule Trigger --- */
+    "ChannelEventTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.ChannelEventTrigger()"],
+        "body": "triggers.ChannelEventTrigger(\"${1:triggerChannel}\", \"${2:event}\"),"
     },
     "ItemStateChangeTrigger": {
         "scope": "javascript",
         "prefix": ["triggers.ItemStateChangeTrigger()"],
         "body": "triggers.ItemStateChangeTrigger(\"${1:item}\", \"${2:oldState}\", \"${3:newState}\"),"
     },
+    "ItemStateUpdateTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.ItemStateUpdateTrigger()"],
+        "body": "triggers.ItemStateUpdateTrigger(\"${1:item}\", \"${2:state}\"),"
+    },
+    "ItemCommandTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.ItemCommandTrigger()"],
+        "body": "triggers.ItemCommandTrigger(\"${1:item}\", \"${2:command}\"),"
+    },
+    "GroupStateChangeTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.GroupStateChangeTrigger()"],
+        "body": "triggers.GroupStateChangeTrigger(\"${1:group}\", \"${2:oldState}\", \"${3:newState}\"),"
+    },
+    "GroupStateUpdateTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.GroupStateUpdateTrigger()"],
+        "body": "triggers.GroupStateUpdateTrigger(\"${1:group}\", \"${2:state}\"),"
+    },
+    "GroupCommandTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.GroupCommandTrigger()"],
+        "body": "triggers.GroupCommandTrigger(\"${1:item}\", \"${2:command}\"),"
+    },
+    "ThingStatusUpdateTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.ThingStatusUpdateTrigger()"],
+        "body": "triggers.ThingStatusUpdateTrigger(\"${1:thingUID}\", \"${2:status}\"),"
+    },
     "ThingStatusChangeTrigger": {
         "scope": "javascript",
         "prefix": ["triggers.ThingStatusChangeTrigger()"],
-        "body": "triggers.ThingStatusChangeTrigger(\"${1:item}\", \"${2:newState}\", \"${3:oldState}\"),"
+        "body": "triggers.ThingStatusChangeTrigger(\"${1:thingUID}\", \"${2:newStatus}\", \"${3:oldStatus}\"),"
     },
-    "ChannelEventTrigger": {
+    "SystemStartlevelTrigger": {
         "scope": "javascript",
-        "prefix": ["triggers.ChannelEventTrigger()"],
-        "body": "triggers.ChannelEventTrigger(\"${4:triggerChannel}\", \"${5:event}\"),"
+        "prefix": ["triggers.SystemStartlevelTrigger()"],
+        "body": "triggers.SystemStartlevelTrigger(${1:level}),"
     },
+    "GenericCronTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.GenericCronTrigger()"],
+        "body": "triggers.GenericCronTrigger(\"${1:CronExpression}\"),"
+    },
+    "TimeOfDayTrigger": {
+        "scope": "javascript",
+        "prefix": ["triggers.GenericCronTrigger()"],
+        "body": "triggers.TimeOfDayTrigger(\"${1:TimeOfDay}\"),"
+    },
+    /* --- Item Interaction --- */
     "items.getItem()": {
         "scope": "javascript",
         "prefix": ["items.getItem", "getItem"],
-        "body": "items.getItem(${1:itemName});"
+        "body": "items.getItem(${1:itemName})$0;"
     },
     "items.getItem().state": {
         "scope": "javascript",
@@ -95,30 +266,28 @@
     },
     "items.getItem().sendCommand()": {
         "scope": "javascript",
-
         "prefix": ["items.getItem", "sendCommand"],
         "body": "items.getItem(${1:itemName}).sendCommand(${2:command});"
     },
     "items.getItem().sendCommandIfDifferent()": {
         "scope": "javascript",
-
         "prefix": ["items.getItem", "sendCommandIfDifferent"],
         "body": "items.getItem(${1:itemName}).sendCommandIfDifferent(${2:command});"
     },
     "items.getItem().postUpdate()": {
         "scope": "javascript",
-
         "prefix": ["items.getItem", "postUpdate"],
         "body": "items.getItem(${1:itemName}).postUpdate(${2:command});"
     },
+    /* --- Event Interaction --- */
     "event.receivedCommand.toString()": {
         "scope": "javascript",
         "prefix": ["event.receivedCommand.toString", "receivedCommand"],
-        "body": "event.receivedCommand.toString();",
+        "body": "event.receivedCommand.toString()",
     },
     "event.itemName": {
         "scope": "javascript",
-        "prefix": "event.itemName",
-        "body": "event.itemName;",
+        "prefix": ["event.itemName", "triggeringItem"],
+        "body": "event.itemName",
     },
 }
