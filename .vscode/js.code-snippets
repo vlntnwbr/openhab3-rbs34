@@ -250,7 +250,7 @@
     },
     "TimeOfDayTrigger": {
         "scope": "javascript",
-        "prefix": ["triggers.GenericCronTrigger()"],
+        "prefix": ["triggers.TimeOfDayTrigger()"],
         "body": "triggers.TimeOfDayTrigger(\"${1:TimeOfDay}\"),"
     },
     /* --- Item Interaction --- */
