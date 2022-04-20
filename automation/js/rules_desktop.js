@@ -51,7 +51,7 @@ rules.JSRule({name: DesktopRule.get("Power On"),
 
 rules.JSRule({name: DesktopRule.get("Power Off"),
     description: "Initiate Remote shutdown unless remote is disabled.",
-    id: "uniqueIdentifier",
+    id: "desktopComputerPowerOff",
     triggers: [
         triggers.ItemCommandTrigger("desktopComputerPower", "OFF"),
     ],
