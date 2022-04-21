@@ -1,5 +1,5 @@
-const { applyBrightnessPreset, applyColorPreset } = require("rbs34/lights");
-const { TaggedRuleName } = require("rbs34/utils");
+const { applyBrightnessPreset, applyColorPreset } = require("./rbs34/lights");
+const { TaggedRuleName } = require("./rbs34/utils");
 
 const LightingRule = new TaggedRuleName("lighting");
 let logger = log("lighting");

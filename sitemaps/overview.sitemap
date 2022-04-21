@@ -6,8 +6,11 @@ sitemap overview label="RBS-34: Overview" {
         Text item=desktopComputerShuttingDown visibility=[desktopComputerShuttingDown == ON]
         Text icon="error" label="Presence phone is unreachable" visibility=[presencePhoneValentinOnline == OFF]
         Text icon="error" label="Proxy phone is unreachable" visibility=[proxyPhoneOnline == OFF]
+        /* --- State Helpers --- */
+        Switch item=presenceValentinSuspended label="Presence Detection" mappings=[
+            "ON" = "Disabled", "OFF" = "Enabled"
+        ]
         /* --- Standalone Plug Control --- */
-        Switch item=bedPlugLEDStripPower label="Bed LED Strip" icon="light"
         Switch item=plugFanPower label="Room Fan []" icon="fan"
         Switch item=deskPlugPower icon="screen" label="Desk Monitors"
         /* --- Desktop Control --- */
@@ -30,13 +33,15 @@ sitemap overview label="RBS-34: Overview" {
             Text icon="error" label="Chromecast is booting" visibility=[speakersChromecastBooting == ON]
         }
         /* --- Television Control --- */
-        Switch item=tvWebOSPower label="Television" icon="screen"
-        Group item=tvWebOSPower label="Television Options" icon="screen" {
+        Switch item=tvPower label="Television" icon="screen"
+        Group item=tvPower label="Television Options" icon="screen" {
             Slider item=tvWebOSVolume label="Volume"
-            Switch item=tvWebOSute label="Telvision Muted" icon="soundvolume"
+            Switch item=tvWebOSMute label="Telvision Muted" icon="soundvolume"
             Text item=tvWebOSAppLauncher label="[%s]"
             Text item=tvWebOSChannel label="[%s]"
         }
+        /* --- Lights Controlled by Plugs --- */
+        Switch item=bedPlugLEDStripPower label="Bed LED Strip" icon="light"
     }
     Frame label="Lighting - Brightness Presets" {
         Switch item=lightingPresetBrightness label="" mappings=[

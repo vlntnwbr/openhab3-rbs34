@@ -1,5 +1,5 @@
-const { TaggedRuleName } = require("rbs34/utils");
-const { sendTaskerCommandViaJoin } = require("rbs34/joaojoin");
+const { TaggedRuleName } = require("./rbs34/utils");
+const { sendTaskerCommandViaJoin } = require("./rbs34/joaojoin");
 
 
 let logger = log("presence");

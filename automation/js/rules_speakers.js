@@ -1,4 +1,4 @@
-const { TaggedRuleName } = require("rbs34/utils");
+const { TaggedRuleName } = require("./rbs34/utils");
 
 let logger = log("speakers");
 const SpeakerRule = new TaggedRuleName("speakers");

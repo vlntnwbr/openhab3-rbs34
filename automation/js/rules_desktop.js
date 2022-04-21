@@ -1,6 +1,6 @@
 const { actions, items } = require ("openhab");
-const { TaggedRuleName, sendEventGhostCommand } = require("rbs34/utils");
-const { sendTaskerCommandViaJoin } = require("rbs34/joaojoin");
+const { TaggedRuleName, sendEventGhostCommand } = require("./rbs34/utils");
+const { sendTaskerCommandViaJoin } = require("./rbs34/joaojoin");
 
 let logger = log("desktop");
 const DesktopRule = new TaggedRuleName("desktop");
