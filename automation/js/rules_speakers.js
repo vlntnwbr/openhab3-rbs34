@@ -1,19 +1,7 @@
-const { TaggedRuleName } = require("rbs34/utils")
+const { TaggedRuleName } = require("rbs34/utils");
 
 let logger = log("speakers");
-const SpeakerRule = new TaggedRuleName("speakers")
-
-
-rules.JSRule({name: SpeakerRule.get("Sound System - Power On when TV turned on"),
-    description: "Power on the Sound System when the Television is turned on",
-    id: "speakersPowerFromTV",
-    triggers: [
-        triggers.ItemStateChangeTrigger("tvWebOSPower", "OFF", "ON"),
-    ],
-    execute: event => {
-        items.getItem("speakersPower").sendCommandIfDifferent("ON");
-    }
-});
+const SpeakerRule = new TaggedRuleName("speakers");
 
 
 rules.JSRule({name: SpeakerRule.get("Sound System - Power On"),
