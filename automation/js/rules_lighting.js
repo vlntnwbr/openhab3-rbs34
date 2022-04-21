@@ -5,6 +5,38 @@ const LightingRule = new TaggedRuleName("lighting");
 let logger = log("lighting");
 
 
+const tvLampTriggerGroups = {
+    "tvLampBrightness": "mgTelevisionLampBrightness",
+    "tvLampColor": "mgTelevisionLampColor",
+    "tvLampColorTemperature": "mgTelevisionLampColorTemperature",
+    "tvLampPower": "mgTelevisionLampPower",
+}
+
+
+rules.JSRule({name: LightingRule.get("TV-Lamp - Trigger Item Activated"),
+    description: "Send command received by trigger to matching group members",
+    id: "televisionLampTriggerHandler",
+    triggers: [
+        triggers.ItemCommandTrigger("tvLampBrightness"),
+        triggers.ItemCommandTrigger("tvLampColor"),
+        triggers.ItemCommandTrigger("tvLampColorTemperature"),
+        triggers.ItemCommandTrigger("tvLampPower")
+    ],
+    execute: event => {
+        const cmd = event.receivedCommand.toString();
+        const item = event.itemName;
+        const groupName = tvLampTriggerGroups[item];
+        logger.info("trigger for '{}' was activated", groupName);
+        const tvLampBulbs = items.getItem(groupName).members;
+        for (let i = 0; i < tvLampBulbs.length; i++) {
+            const groupMember = tvLampBulbs[i];
+            logger.info("sending '{}' to '{}'", cmd, groupMember.name);
+            groupMember.sendCommand(cmd);
+        };
+    }
+});
+
+
 rules.JSRule({name: LightingRule.get("Apply Brightness Preset"),
     description: "Applies the currently selected brightness preset to triggering Lamp",
     id: "lightingApplyBrightnessPreset",
@@ -54,29 +86,3 @@ rules.JSRule({name: LightingRule.get("Apply Color Preset"),
         items.getItem(triggeringItemName).postUpdate("OFF");
     }
 });
-
-
-/*rules.JSRule({name: "[LIGHTING] Apply Brightness Preset",
-    description: "Applies to selected cmd to all activated Lights",
-    id: "lightingApplyBrightnessPreset",
-    triggers: [triggers.ItemCommandTrigger("lightingPresetBrightness")],
-    execute: event => {
-        const preset = event.receivedCommand.toString();
-        ["bulbHolmo", "loungeBulb", "tvLamp"].forEach(lamp => {
-            applyBrightnessPreset(lamp, preset);
-        });
-    }
-});
-
-
-rules.JSRule({name: "[LIGHTING] Apply Color Preset",
-    description: "Applies selected color preset to activated Lights",
-    id: "lightingApplyColorPreset",
-    triggers: [triggers.ItemCommandTrigger("lightingPresetColor")],
-    execute: event => {
-        const preset = event.receivedCommand.toString();
-        ["bulbHolmo", "loungeBulb", "tvLamp"].forEach(lamp => {
-            applyColorPreset(lamp, preset);
-        });
-    }
-});*/
