@@ -1,6 +1,6 @@
-const { sendTaskerCommandViaJoin } = require("./rbs34/joaojoin");
-const { applyBrightnessPreset, applyColorPreset } = require("./rbs34/lights");
-const { TaggedRuleName, Timer } = require("./rbs34/utils");
+const { sendTaskerCommandViaJoin } = require("rbs34/joaojoin");
+const { applyBrightnessPreset, applyColorPreset } = require("rbs34/lights");
+const { TaggedRuleName, Timer } = require("rbs34/utils");
 
 let logger = log("sleep");
 const SleepRule = new TaggedRuleName("sleep");

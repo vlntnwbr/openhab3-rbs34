@@ -16,9 +16,9 @@
         "scripts/": true,
         "transform/": true,
         "automation/jsr223/": true,
-        // "automation/js/node_modules/@js-joda/": true,
-        // "automation/js/node_modules/parse-duration/": true,
-        // "automation/js/node_modules/openhab/": true,
-        // "**/*package**.json": true,
+        "automation/js/node_modules/@js-joda/": true,
+        "automation/js/node_modules/parse-duration/": true,
+        "automation/js/node_modules/openhab/": true,
+        "**/*package**.json": true,
     }
 }
