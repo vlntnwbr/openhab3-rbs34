@@ -23,6 +23,13 @@
             "problemMatcher": [],
             "command": "ssh",
             "args": ["raspi", "bash", "openhab/rbs34/restart.sh"]
-        }
+        },
+        {
+            "label": "ssh vweber@vweber-raspi",
+            "type": "shell",
+            "problemMatcher": [],
+            "command": "ssh",
+            "args": ["raspi"]
+        },
     ]
 }
